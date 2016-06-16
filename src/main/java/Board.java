@@ -13,6 +13,10 @@ public class Board {
                             "-----\n" +
                             "4|5|6\n" +
                             "-----\n" +
-                            "7|8|9");
+                            "7|8|9\n");
+    }
+
+    public void mark(String cellToMark) {
+
     }
 }
