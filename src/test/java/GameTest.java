@@ -22,10 +22,10 @@ public class GameTest {
     }
 
     @Test
-    public void shouldDisplayTicTacToeBoardWhenGameStarts() {
+    public void shouldDisplayTicTacToeBoardWhenBoardIsDrawn() {
         game.start();
 
-        verify(board).draw();
+        verify(board, times(2)).draw();
     }
 
     @Test
@@ -51,10 +51,4 @@ public class GameTest {
         verify(board).mark("1");
     }
 
-    @Test
-    public void shouldRedrawBoardWhenBoardHasBeenUpdatedWithPlayerSymbol() {
-        game.start();
-
-        verify(board, times(2)).draw();
-    }
 }
