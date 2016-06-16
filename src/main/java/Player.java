@@ -26,4 +26,8 @@ public class Player {
 
         return cellToMark;
     }
+
+    public String symbol() {
+        return symbol;
+    }
 }

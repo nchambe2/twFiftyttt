@@ -46,11 +46,12 @@ public class GameTest {
 
     @Test
     public void shouldMarkBoardWhenPlayerOneHasChosenACellToMark() {
+        when(playerOne.symbol()).thenReturn("X");
         when(playerOne.chooseCellToMark()).thenReturn("1");
 
         game.start();
 
-        verify(board).mark("1");
+        verify(board).mark("1", "X");
     }
 
     @Test
@@ -62,11 +63,12 @@ public class GameTest {
 
     @Test
     public void shouldMarkBoardWhenPlayerTwoHasChosenACellToMark() {
+        when(playerTwo.symbol()).thenReturn("O");
         when(playerTwo.chooseCellToMark()).thenReturn("2");
 
         game.start();
 
-        verify(board).mark("2");
+        verify(board).mark("2", "O");
     }
 
 }

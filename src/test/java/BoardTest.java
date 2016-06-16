@@ -39,7 +39,7 @@ public class BoardTest {
 
     @Test
     public void shouldUpdateCellOneWithXWhenCellOneIsTheCellToBeMarkedX() {
-        board.mark("1");
+        board.mark("1", "X");
 
         assertEquals("X", cells.get(1));
     }

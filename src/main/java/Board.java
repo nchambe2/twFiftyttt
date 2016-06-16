@@ -21,8 +21,8 @@ public class Board {
                                           cells.get(7), cells.get(8), cells.get(9)));
     }
 
-    public void mark(String cellToMark) {
-        cells.put(Integer.parseInt(cellToMark), "X");
+    public void mark(String cellToMark, String playerSymbol) {
+        cells.put(Integer.parseInt(cellToMark), playerSymbol);
     }
 }
 

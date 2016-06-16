@@ -21,6 +21,3 @@ public class TicTacToe {
     }
 }
 
-//have game take two players
-//have players know what type of symbol they have
-//update board to mark a cell with players symbols

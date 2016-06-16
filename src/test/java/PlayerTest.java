@@ -18,4 +18,12 @@ public class PlayerTest {
 
         assertThat(player.chooseCellToMark(), is("1"));
     }
+
+    @Test
+    public void getPlayerSymbol() {
+        BufferedReader bufferedReader = mock(BufferedReader.class);
+        Player player = new Player(bufferedReader, "Q");
+
+        assertThat(player.symbol(), is("Q"));
+    }
 }

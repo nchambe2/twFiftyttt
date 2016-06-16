@@ -18,10 +18,10 @@ public class Game {
         board.draw();
         printStream.println("Choose a cell to mark from 1 - 9:");
         String cellToBeMarked = playerOne.chooseCellToMark();
-        board.mark(cellToBeMarked);
+        board.mark(cellToBeMarked, playerOne.symbol());
         board.draw();
         cellToBeMarked = playerTwo.chooseCellToMark();
-        board.mark(cellToBeMarked);
+        board.mark(cellToBeMarked, playerTwo.symbol());
         board.draw();
     }
 }
