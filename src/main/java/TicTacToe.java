@@ -13,13 +13,14 @@ public class TicTacToe {
             cells.put(i, Integer.toString(i));
         }
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        Player player = new Player(bufferedReader);
-        Game game = new Game(board, printStream, player);
+        Player playerOne = new Player(bufferedReader);
+        Player playerTwo = new Player(bufferedReader);
+        Game game = new Game(board, printStream, playerOne, playerTwo);
 
         game.start();
     }
 }
 
-//now I would change the structure of the board from a string to a hash map
-//instead of replace
-//you would just update the value
+//have game take two players
+//have players know what type of symbol they have
+//update board to mark a cell with players symbols

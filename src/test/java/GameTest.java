@@ -11,21 +11,23 @@ public class GameTest {
     private Game game;
     private Board board;
     private PrintStream printStream;
-    private Player player;
+    private Player playerOne;
+    private Player playerTwo;
 
     @Before
     public void setUp() {
         board = mock(Board.class);
         printStream = mock(PrintStream.class);
-        player = mock(Player.class);
-        game = new Game(board, printStream, player);
+        playerOne = mock(Player.class);
+        playerTwo = mock(Player.class);
+        game = new Game(board, printStream, playerOne, playerTwo);
     }
 
     @Test
     public void shouldDisplayTicTacToeBoardWhenBoardIsDrawn() {
         game.start();
 
-        verify(board, times(2)).draw();
+        verify(board, times(3)).draw();
     }
 
     @Test
@@ -36,19 +38,35 @@ public class GameTest {
     }
 
     @Test
-    public void shouldCaptureTheCellPlayerWantsToMarkWhenPlayerHasBeenPrompted() {
+    public void shouldCaptureTheCellPlayerOneWantsToMarkWhenTheyHaveBeenPrompted() {
         game.start();
 
-        verify(player).chooseCellToMark();
+        verify(playerOne).chooseCellToMark();
     }
 
     @Test
-    public void shouldMarkBoardWhenPlayerHasChosenACellToMark() {
-        when(player.chooseCellToMark()).thenReturn("1");
+    public void shouldMarkBoardWhenPlayerOneHasChosenACellToMark() {
+        when(playerOne.chooseCellToMark()).thenReturn("1");
 
         game.start();
 
         verify(board).mark("1");
+    }
+
+    @Test
+    public void shouldCaptureTheCellPlayerTwoWantsToMarkWhenTheyHaveBeenPrompted() {
+        game.start();
+
+        verify(playerTwo).chooseCellToMark();
+    }
+
+    @Test
+    public void shouldMarkBoardWhenPlayerTwoHasChosenACellToMark() {
+        when(playerTwo.chooseCellToMark()).thenReturn("2");
+
+        game.start();
+
+        verify(board).mark("2");
     }
 
 }

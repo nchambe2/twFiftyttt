@@ -3,19 +3,24 @@ import java.io.PrintStream;
 public class Game {
     private Board board;
     private PrintStream printStream;
-    private Player player;
+    private Player playerOne;
+    private Player playerTwo;
 
-    public Game(Board board, PrintStream printStream, Player player) {
+    public Game(Board board, PrintStream printStream, Player playerOne, Player playerTwo) {
 
         this.board = board;
         this.printStream = printStream;
-        this.player = player;
+        this.playerOne = playerOne;
+        this.playerTwo = playerTwo;
     }
 
     public void start() {
         board.draw();
         printStream.println("Choose a cell to mark from 1 - 9:");
-        String cellToBeMarked = player.chooseCellToMark();
+        String cellToBeMarked = playerOne.chooseCellToMark();
+        board.mark(cellToBeMarked);
+        board.draw();
+        cellToBeMarked = playerTwo.chooseCellToMark();
         board.mark(cellToBeMarked);
         board.draw();
     }
