@@ -9,10 +9,11 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 public class PlayerTest {
+
     @Test
     public void shouldCapturetheCellToMarkWhenPlayerMakesASelection() throws IOException {
         BufferedReader bufferedReader = mock(BufferedReader.class);
-        Player player = new Player(bufferedReader);
+        Player player = new Player(bufferedReader, "Q");
         when(bufferedReader.readLine()).thenReturn("1");
 
         assertThat(player.chooseCellToMark(), is("1"));

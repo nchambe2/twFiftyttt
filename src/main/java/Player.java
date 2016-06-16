@@ -3,10 +3,12 @@ import java.io.IOException;
 
 public class Player {
     private BufferedReader bufferedReader;
+    private String symbol;
 
-    public Player(BufferedReader bufferedReader) {
+    public Player(BufferedReader bufferedReader, String symbol) {
 
         this.bufferedReader = bufferedReader;
+        this.symbol = symbol;
     }
 
     public String chooseCellToMark() {

@@ -13,8 +13,8 @@ public class TicTacToe {
             cells.put(i, Integer.toString(i));
         }
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        Player playerOne = new Player(bufferedReader);
-        Player playerTwo = new Player(bufferedReader);
+        Player playerOne = new Player(bufferedReader, "X");
+        Player playerTwo = new Player(bufferedReader, "O");
         Game game = new Game(board, printStream, playerOne, playerTwo);
 
         game.start();
