@@ -4,9 +4,7 @@ import org.junit.Test;
 import java.io.PrintStream;
 
 import static org.mockito.Matchers.contains;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 public class GameTest {
 
@@ -51,5 +49,12 @@ public class GameTest {
         game.start();
 
         verify(board).mark("1");
+    }
+
+    @Test
+    public void shouldRedrawBoardWhenBoardHasBeenUpdatedWithPlayerSymbol() {
+        game.start();
+
+        verify(board, times(2)).draw();
     }
 }

@@ -14,12 +14,7 @@ public class TicTacToe {
     }
 }
 
-//create a player class
-
-//redraw the board with the player's symbol in that location
-//mark the
-//player mark should be an "X"
-
 //prompt the user to make a move - done
 //get the cell that the player wants to mark - done
-//mark the boardC
+//mark the board - done
+//redraw the board - with the player's symbol in that location - done

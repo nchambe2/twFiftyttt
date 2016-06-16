@@ -17,6 +17,7 @@ public class Game {
         printStream.println("Choose a cell to mark from 1 - 9:");
         String cellToBeMarked = player.chooseCellToMark();
         board.mark(cellToBeMarked);
+        board.draw();
     }
 }
 
