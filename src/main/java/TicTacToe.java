@@ -15,7 +15,8 @@ public class TicTacToe {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         Player playerOne = new Player(bufferedReader, "X");
         Player playerTwo = new Player(bufferedReader, "O");
-        Game game = new Game(board, printStream, playerOne, playerTwo);
+        LocationChecker boardValidator = new LocationChecker(cells, printStream, board);
+        Game game = new Game(board, printStream, playerOne, playerTwo, boardValidator);
 
         game.start();
     }

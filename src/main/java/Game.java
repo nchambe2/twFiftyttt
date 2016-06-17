@@ -5,23 +5,25 @@ public class Game {
     private PrintStream printStream;
     private Player playerOne;
     private Player playerTwo;
+    private LocationChecker locationChecker;
 
-    public Game(Board board, PrintStream printStream, Player playerOne, Player playerTwo) {
+    public Game(Board board, PrintStream printStream, Player playerOne, Player playerTwo, LocationChecker locationChecker) {
 
         this.board = board;
         this.printStream = printStream;
         this.playerOne = playerOne;
         this.playerTwo = playerTwo;
+        this.locationChecker = locationChecker;
     }
 
     public void start() {
         board.draw();
         printStream.println("Choose a cell to mark from 1 - 9:");
         String cellToBeMarked = playerOne.chooseCellToMark();
-        board.mark(cellToBeMarked, playerOne.symbol());
+        locationChecker.checkAvailability(cellToBeMarked, playerOne.symbol());
         board.draw();
         cellToBeMarked = playerTwo.chooseCellToMark();
-        board.mark(cellToBeMarked, playerTwo.symbol());
+        locationChecker.checkAvailability(cellToBeMarked, playerOne.symbol());
         board.draw();
     }
 }

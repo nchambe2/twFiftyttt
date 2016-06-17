@@ -36,11 +36,11 @@ public class BoardTest {
                                     "7|8|9\n");
     }
 
-
     @Test
-    public void shouldUpdateCellOneWithXWhenCellOneIsTheCellToBeMarkedX() {
+    public void shouldUpdateCellOneWithXWhenCellOneIsTheCellToBeMarked() {
         board.mark("1", "X");
 
         assertEquals("X", cells.get(1));
     }
+
 }

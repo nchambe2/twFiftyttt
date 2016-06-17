@@ -13,6 +13,7 @@ public class GameTest {
     private PrintStream printStream;
     private Player playerOne;
     private Player playerTwo;
+    private LocationChecker locationChecker;
 
     @Before
     public void setUp() {
@@ -20,7 +21,8 @@ public class GameTest {
         printStream = mock(PrintStream.class);
         playerOne = mock(Player.class);
         playerTwo = mock(Player.class);
-        game = new Game(board, printStream, playerOne, playerTwo);
+        locationChecker = mock(LocationChecker.class);
+        game = new Game(board, printStream, playerOne, playerTwo, locationChecker);
     }
 
     @Test
@@ -44,15 +46,6 @@ public class GameTest {
         verify(playerOne).chooseCellToMark();
     }
 
-    @Test
-    public void shouldMarkBoardWhenPlayerOneHasChosenACellToMark() {
-        when(playerOne.symbol()).thenReturn("X");
-        when(playerOne.chooseCellToMark()).thenReturn("1");
-
-        game.start();
-
-        verify(board).mark("1", "X");
-    }
 
     @Test
     public void shouldCaptureTheCellPlayerTwoWantsToMarkWhenTheyHaveBeenPrompted() {
@@ -61,14 +54,13 @@ public class GameTest {
         verify(playerTwo).chooseCellToMark();
     }
 
-    @Test
-    public void shouldMarkBoardWhenPlayerTwoHasChosenACellToMark() {
-        when(playerTwo.symbol()).thenReturn("O");
-        when(playerTwo.chooseCellToMark()).thenReturn("2");
 
+    @Test
+    public void shouldCheckToSeeIfLocationIsAvaliableWhenPlayerOneHasChosenACellToMark() {
+        when(playerOne.symbol()).thenReturn("X");
+        when(playerOne.chooseCellToMark()).thenReturn("1");
         game.start();
 
-        verify(board).mark("2", "O");
+        verify(locationChecker).checkAvailability("1", "X");
     }
-
 }
