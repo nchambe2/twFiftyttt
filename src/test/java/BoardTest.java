@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static junit.framework.Assert.assertEquals;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.Is.is;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
@@ -41,6 +43,23 @@ public class BoardTest {
         board.mark("1", "X");
 
         assertEquals("X", cells.get(1));
+    }
+
+    @Test
+    public void shouldReturnFalseWhenLocationIsEmpty() {
+        assertThat(board.isLocationTaken("1"), is(false));
+    }
+
+    @Test
+    public void shouldReturnTrueWhenLocationIsFilledWithAnX() {
+        cells.put(1, "X");
+        assertThat(board.isLocationTaken("1"), is(true));
+    }
+
+    @Test
+    public void shouldReturnFalseWhenLocationIsFilledWithAnO() {
+        cells.put(1, "O");
+        assertThat(board.isLocationTaken("1"), is(true));
     }
 
 }

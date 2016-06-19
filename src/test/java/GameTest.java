@@ -13,7 +13,6 @@ public class GameTest {
     private PrintStream printStream;
     private Player playerOne;
     private Player playerTwo;
-    private LocationChecker locationChecker;
 
     @Before
     public void setUp() {
@@ -21,8 +20,7 @@ public class GameTest {
         printStream = mock(PrintStream.class);
         playerOne = mock(Player.class);
         playerTwo = mock(Player.class);
-        locationChecker = mock(LocationChecker.class);
-        game = new Game(board, printStream, playerOne, playerTwo, locationChecker);
+        game = new Game(board, printStream, playerOne, playerTwo);
     }
 
     @Test
@@ -40,27 +38,18 @@ public class GameTest {
     }
 
     @Test
-    public void shouldCaptureTheCellPlayerOneWantsToMarkWhenTheyHaveBeenPrompted() {
+    public void shouldHavePlayerOneMoveWhenMessagePromptHasBeenDisplayed() {
         game.start();
 
-        verify(playerOne).chooseCellToMark();
+        verify(playerOne).move();
     }
 
 
     @Test
-    public void shouldCaptureTheCellPlayerTwoWantsToMarkWhenTheyHaveBeenPrompted() {
+    public void shouldHavePlayerTwoMoveWhenMessagePromptHasBeenDisplayed() {
         game.start();
 
-        verify(playerTwo).chooseCellToMark();
+        verify(playerTwo).move();
     }
 
-
-    @Test
-    public void shouldCheckToSeeIfLocationIsAvaliableWhenPlayerOneHasChosenACellToMark() {
-        when(playerOne.symbol()).thenReturn("X");
-        when(playerOne.chooseCellToMark()).thenReturn("1");
-        game.start();
-
-        verify(locationChecker).checkAvailability("1", "X");
-    }
 }

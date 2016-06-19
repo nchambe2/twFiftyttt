@@ -30,7 +30,7 @@ public class LocationCheckerTest {
     public void shouldDisplayLocationIsUnavailableMessageWhenLocationIsOccupiedByAnXOrAnO() {
         cells.put(1, "X");
 
-        locationChecker.checkAvailability("1", "X");
+        locationChecker.locationTaken("1", "X");
 
         verify(printStream).println(contains("Location Already Taken"));
     }
@@ -39,7 +39,7 @@ public class LocationCheckerTest {
     public void shouldMarkBoardWithPlayerSymbolWhenLocationIsEmpty() {
         LocationChecker locationChecker = new LocationChecker(cells, printStream, board);
 
-        locationChecker.checkAvailability("1", "X");
+        locationChecker.locationTaken("1", "X");
 
         verify(board).mark("1", "X");
     }

@@ -1,4 +1,5 @@
 import java.io.PrintStream;
+import java.util.IntSummaryStatistics;
 import java.util.Map;
 
 public class Board {
@@ -26,6 +27,11 @@ public class Board {
 
     }
 
+
+    public Boolean isLocationTaken(String cellToMark) {
+        Integer key = Integer.parseInt(cellToMark);
+        return cells.get(key).equals("X") || cells.get(key).equals("O");
+    }
 }
 
 

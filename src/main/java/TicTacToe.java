@@ -13,12 +13,13 @@ public class TicTacToe {
             cells.put(i, Integer.toString(i));
         }
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        Player playerOne = new Player(bufferedReader, "X");
-        Player playerTwo = new Player(bufferedReader, "O");
-        LocationChecker boardValidator = new LocationChecker(cells, printStream, board);
-        Game game = new Game(board, printStream, playerOne, playerTwo, boardValidator);
+        UserInput userInput = new UserInput(bufferedReader);
+        Player playerOne = new Player("X", userInput, board, printStream);
+        Player playerTwo = new Player("O", userInput, board, printStream);
+        Game game = new Game(board, printStream, playerOne, playerTwo);
 
         game.start();
     }
 }
+
 

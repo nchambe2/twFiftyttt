@@ -12,15 +12,17 @@ public class LocationChecker {
         this.board = board;
     }
 
-    public void checkAvailability(String cellToMark, String symbol) {
-        if(isLocationAvailable(cellToMark)) {
+    public void locationTaken(String cellToMark, String symbol) {
+        if(isLocationTaken(cellToMark)) {
             printStream.println("Location Already Taken");
         } else {
             board.mark(cellToMark, symbol);
         }
     }
 
-    private boolean isLocationAvailable(String cellToMark) {
+
+    private boolean isLocationTaken(String cellToMark) {
         return cells.get(Integer.parseInt(cellToMark)).equals("X") || cells.get(Integer.parseInt(cellToMark)).equals("O");
     }
+
 }

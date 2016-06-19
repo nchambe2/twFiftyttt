@@ -1,33 +1,38 @@
-import java.io.BufferedReader;
-import java.io.IOException;
+import java.io.PrintStream;
 
 public class Player {
-    private BufferedReader bufferedReader;
     private String symbol;
+    private UserInput userInput;
+    private Board board;
+    private PrintStream printStream;
 
-    public Player(BufferedReader bufferedReader, String symbol) {
-
-        this.bufferedReader = bufferedReader;
+    public Player(String symbol, UserInput userInput, Board board, PrintStream printStream) {
         this.symbol = symbol;
+        this.userInput = userInput;
+        this.board = board;
+        this.printStream = printStream;
     }
 
-    public String chooseCellToMark() {
-        return getUserInput();
-    }
+    public void move() {
+        String cellToMark = userInput.get();
 
-    private String getUserInput() {
-        String cellToMark = "";
-
-        try {
-            cellToMark = bufferedReader.readLine();
-        } catch (IOException e) {
-            e.printStackTrace();
+        if (board.isLocationTaken(cellToMark)) {
+            printStream.println("Location is Taken");
+        } else {
+            board.mark(cellToMark, symbol);
         }
-
-        return cellToMark;
     }
 
     public String symbol() {
         return symbol;
     }
 }
+
+//while locationCheck.isLocationTaken == true
+//prompt user for input
+//else board .mark
+//player.move
+//while board.locationTaken = true
+// print location taken message
+//get user input
+//if board.locationTaken isn't false mark
