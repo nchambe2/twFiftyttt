@@ -14,8 +14,8 @@ public class TicTacToe {
         }
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         UserInput userInput = new UserInput(bufferedReader);
-        Player playerOne = new Player("X", board, printStream, userInput);
-        Player playerTwo = new Player("O", board, printStream, userInput);
+        Player playerOne = new Player("X", 1, board, printStream, userInput);
+        Player playerTwo = new Player("O", 2, board, printStream, userInput);
         Game game = new Game(board, printStream, playerOne, playerTwo);
 
         game.start();

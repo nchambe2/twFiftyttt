@@ -3,7 +3,6 @@ import org.junit.Test;
 
 import java.io.PrintStream;
 
-import static org.mockito.Matchers.contains;
 import static org.mockito.Mockito.*;
 
 public class GameTest {
@@ -30,6 +29,12 @@ public class GameTest {
         verify(board, times(3)).draw();
     }
 
+    @Test
+    public void shouldPromptPlayersToSelectACellToMarkWhenTheBoardHasBeenDrawn() {
+        game.start();
+
+        verify(printStream, times(2)).println(contains("Choose a cell to mark"));
+    }
 
     @Test
     public void shouldHavePlayerOneMoveWhenMessagePromptHasBeenDisplayed() {
@@ -45,5 +50,20 @@ public class GameTest {
 
         verify(playerTwo).move();
     }
+
+    @Test
+    public void shouldDisplayPlayerOnesNumberWhenPlayerIsPromptedToMakeAMove() {
+        game.start();
+
+        verify(playerOne).getNumber();
+    }
+
+    @Test
+    public void shouldDisplayPlayerTwosNumberWhenPlayerIsPromptedToMakeAMove() {
+        game.start();
+
+        verify(playerTwo).getNumber();
+    }
+
 
 }

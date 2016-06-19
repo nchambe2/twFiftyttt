@@ -3,6 +3,8 @@ import org.junit.Test;
 
 import java.io.PrintStream;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.Is.is;
 import static org.mockito.Matchers.contains;
 import static org.mockito.Mockito.*;
 
@@ -18,7 +20,7 @@ public class PlayerTest {
         board = mock(Board.class);
         printStream = mock(PrintStream.class);
         userInput = mock(UserInput.class);
-        player = new Player("X", board, printStream, userInput);
+        player = new Player("X", 1, board, printStream, userInput);
     }
 
     @Test
@@ -39,5 +41,10 @@ public class PlayerTest {
         player.move();
 
         verify(board).mark("1", "X");
+    }
+
+    @Test
+    public void shouldReturnPlayerNumber() {
+        assertThat(player.getNumber(), is(1));
     }
 }

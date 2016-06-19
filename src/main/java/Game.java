@@ -15,30 +15,14 @@ public class Game {
 
     public void start() {
         board.draw();
-        printStream.println("Choose a cell to mark from 1 - 9:");
+        printStream.println("Player " + playerOne.getNumber() + " Choose a cell to mark from 1 - 9:");
         playerOne.move();
         board.draw();
-        printStream.println("Choose a cell to mark from 1 - 9:");
+        printStream.println("Player " + playerTwo.getNumber() + " Choose a cell to mark from 1 - 9:");
         playerTwo.move();
         board.draw();
     }
 }
 
-//keep prompting a user for input until it's valid
-//has to be a loop
-//locationchecker has to return a boolean
-//only place currently I can place while loop is in game
-//don't have to send parameters
-//you have the cells
-//iterate through the cells
-
-//Getting a user's input should be the job of someone else
-//a player should know about a board
-//a player should call board.mark
-
-//get user input in game
-//while board.isLocationTaken == false
-//print location taken message
-//do it again
-//then have to pass the cell to mark to player
-//then makr it
+//Display the player number in the print stream
+//player has to have a player number assocaited with it
