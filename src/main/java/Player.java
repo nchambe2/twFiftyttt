@@ -2,37 +2,25 @@ import java.io.PrintStream;
 
 public class Player {
     private String symbol;
-    private UserInput userInput;
     private Board board;
     private PrintStream printStream;
+    private UserInput userInput;
 
-    public Player(String symbol, UserInput userInput, Board board, PrintStream printStream) {
+    public Player(String symbol, Board board, PrintStream printStream, UserInput userInput) {
         this.symbol = symbol;
-        this.userInput = userInput;
         this.board = board;
         this.printStream = printStream;
+        this.userInput = userInput;
     }
 
     public void move() {
         String cellToMark = userInput.get();
-
-        if (board.isLocationTaken(cellToMark)) {
-            printStream.println("Location is Taken");
-        } else {
-            board.mark(cellToMark, symbol);
+        while(board.isLocationTaken(cellToMark)) {
+            printStream.println("Location is Taken! Please select another location to mark.");
+            cellToMark = userInput.get();
         }
+
+        board.mark(cellToMark, symbol);
     }
 
-    public String symbol() {
-        return symbol;
-    }
 }
-
-//while locationCheck.isLocationTaken == true
-//prompt user for input
-//else board .mark
-//player.move
-//while board.locationTaken = true
-// print location taken message
-//get user input
-//if board.locationTaken isn't false mark

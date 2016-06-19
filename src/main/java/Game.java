@@ -35,4 +35,10 @@ public class Game {
 //Getting a user's input should be the job of someone else
 //a player should know about a board
 //a player should call board.mark
-//a
+
+//get user input in game
+//while board.isLocationTaken == false
+//print location taken message
+//do it again
+//then have to pass the cell to mark to player
+//then makr it

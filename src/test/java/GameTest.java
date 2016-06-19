@@ -30,12 +30,6 @@ public class GameTest {
         verify(board, times(3)).draw();
     }
 
-    @Test
-    public void shouldPromptPlayerToSelectACellToMarkWhenBoardHasBeenDrawn() {
-        game.start();
-
-        verify(printStream).println(contains("Choose a cell to mark"));
-    }
 
     @Test
     public void shouldHavePlayerOneMoveWhenMessagePromptHasBeenDisplayed() {
