@@ -26,7 +26,7 @@ public class Player {
         board.mark(cellToMark, symbol);
     }
 
-    public Integer getNumber() {
-        return number;
+    public void prompt() {
+        printStream.println("Player " + number + ". Choose a cell to mark from 1 - 9:");
     }
 }

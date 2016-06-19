@@ -16,7 +16,7 @@ public class TicTacToe {
         UserInput userInput = new UserInput(bufferedReader);
         Player playerOne = new Player("X", 1, board, printStream, userInput);
         Player playerTwo = new Player("O", 2, board, printStream, userInput);
-        Game game = new Game(board, printStream, playerOne, playerTwo);
+        Game game = new Game(board, playerOne, playerTwo);
 
         game.start();
     }

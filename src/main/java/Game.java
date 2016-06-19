@@ -1,28 +1,25 @@
-import java.io.PrintStream;
-
 public class Game {
     private Board board;
-    private PrintStream printStream;
     private Player playerOne;
     private Player playerTwo;
 
-    public Game(Board board, PrintStream printStream, Player playerOne, Player playerTwo) {
+    public Game(Board board, Player playerOne, Player playerTwo) {
         this.board = board;
-        this.printStream = printStream;
         this.playerOne = playerOne;
         this.playerTwo = playerTwo;
     }
 
     public void start() {
         board.draw();
-        printStream.println("Player " + playerOne.getNumber() + " Choose a cell to mark from 1 - 9:");
+        playerOne.prompt();
         playerOne.move();
         board.draw();
-        printStream.println("Player " + playerTwo.getNumber() + " Choose a cell to mark from 1 - 9:");
+        playerTwo.prompt();
         playerTwo.move();
         board.draw();
     }
 }
 
-//Display the player number in the print stream
-//player has to have a player number assocaited with it
+//repeat the board until it's full
+//draw the board once it's full
+//display the game is a draw

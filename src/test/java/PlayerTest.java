@@ -44,7 +44,16 @@ public class PlayerTest {
     }
 
     @Test
-    public void shouldReturnPlayerNumber() {
-        assertThat(player.getNumber(), is(1));
+    public void shouldGetUserInputWhenPlayerMakesAMove() {
+        player.move();
+
+        verify(userInput).get();
+    }
+
+    @Test
+    public void shouldPromptPlayerToMakeAMove() {
+        player.prompt();
+
+        verify(printStream).println(contains("Choose a cell to mark"));
     }
 }
