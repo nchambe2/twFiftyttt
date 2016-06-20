@@ -19,17 +19,29 @@ public class Game {
         while(board.isNotFull()) {
             playerOne.prompt();
             playerOne.move();
+            if(board.isThreeInARow()) {
+                playerOne.winner();
+                break;
+            }
             board.draw();
             if(board.isNotFull()) {
                 playerTwo.prompt();
                 playerTwo.move();
+                if(board.isThreeInARow()) {
+                    playerTwo.winner();
+                    break;
+                }
                 board.draw();
             }
         }
 
-      printStream.println("Game is a draw!");
-      board.draw();
+        if(!board.isNotFull()) {
+            printStream.println("Game is a draw!");
+            board.draw();
+        }
     }
+
 }
+
 
 

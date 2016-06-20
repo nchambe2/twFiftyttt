@@ -56,4 +56,13 @@ public class PlayerTest {
 
         verify(printStream).println(contains("Choose a cell to mark"));
     }
+
+    @Test
+    public void shouldDisplayWinnerMessageWhenTheBoardHasThreeInARowHorizontally() {
+        when(board.isThreeInARow()).thenReturn(true);
+
+        player.winner();
+
+        verify(printStream).println(contains("Wins!"));
+    }
 }

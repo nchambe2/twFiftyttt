@@ -23,34 +23,7 @@ public class GameTest {
     }
 
     @Test
-    public void shouldHaveEachPlayerTakeAtleastOneTurnWhenBoardIsNotFull() {
-        when(board.isNotFull()).thenReturn(true).thenReturn(true).thenReturn(false);
-
-        game.start();
-
-        verify(board, times(3)).isNotFull();
-    }
-
-    @Test
-    public void shouldNotHavePlayersTakeTurnsWhenBoardIsFull() {
-        when(board.isNotFull()).thenReturn(false);
-
-        game.start();
-
-        verify(board, times(1)).isNotFull();
-    }
-
-    @Test
-    public void shouldDisplayTicTacToeBoardWhenBoardIsDrawn() {
-        when(board.isNotFull()).thenReturn(true).thenReturn(false);
-
-        game.start();
-
-        verify(board, atLeast(1)).draw();
-    }
-
-    @Test
-    public void shouldPromptPlayerOneToMoveWhenBoardIsNotFull() {
+    public void shouldPromptPlayerOneToMakeAMoveWhenBoardIsNoTFullAndThereIsNoWinner() {
         when(board.isNotFull()).thenReturn(true).thenReturn(false);
 
         game.start();
@@ -59,7 +32,7 @@ public class GameTest {
     }
 
     @Test
-    public void shouldPromptPlayerTwoToMoveWhenBoardIsNotFull() {
+    public void shouldPromptPlayerTwoToMakeAMoveWhenBoardIsNoTFullAndThereIsNoWinner () {
         when(board.isNotFull()).thenReturn(true).thenReturn(true).thenReturn(false);
 
         game.start();
@@ -68,7 +41,7 @@ public class GameTest {
     }
 
     @Test
-    public void shouldHavePlayerOneMoveWhenMessagePromptHasBeenDisplayed() {
+    public void shouldMakeAMoveWhenPlayerOneHasBeenPrompted() {
         when(board.isNotFull()).thenReturn(true).thenReturn(false);
 
         game.start();
@@ -77,7 +50,7 @@ public class GameTest {
     }
 
     @Test
-    public void shouldHavePlayerTwoMoveWhenMessagePromptHasBeenDisplayed() {
+    public void shouldMakeAMoveWhenPlayerTwoHasBeenPrompted() {
         when(board.isNotFull()).thenReturn(true).thenReturn(true).thenReturn(false);
 
         game.start();
@@ -86,12 +59,42 @@ public class GameTest {
     }
 
     @Test
-    public void shouldDisplayGameIsADrawMessageWhenBoardIsFull() {
-        when(board.isNotFull()).thenReturn(false);
+    public void shouldDisplayWinningMessageWhenPlayerOneHasWon() {
+        when(board.isNotFull()).thenReturn(true).thenReturn(false);
+        when(board.isThreeInARow()).thenReturn(true);
 
         game.start();
 
-        verify(printStream).println(contains("Game is a draw"));
+        verify(playerOne).winner();
     }
 
+    @Test
+    public void shouldDisplayWinningMessageWhenPlayerTwoHasWon() {
+        when(board.isNotFull()).thenReturn(true).thenReturn(true).thenReturn(false);
+        when(board.isThreeInARow()).thenReturn(false).thenReturn(true);
+
+        game.start();
+
+        verify(playerTwo).winner();
+    }
+
+    @Test
+    public void shouldDisplayThreeByThreeBoardWhenTheBoardIsDrawn() {
+        when(board.isNotFull()).thenReturn(true).thenReturn(false);
+        when(board.isThreeInARow()).thenReturn(true);
+
+        game.start();
+
+        verify(board, atLeast(1)).draw();
+    }
+
+    @Test
+    public void shouldDisplayGameIsADrawMessageWhenBoardIsFullAndThereIsNoWinner() {
+        when(board.isNotFull()).thenReturn(false);
+        when(!board.isNotFull()).thenReturn(false);
+
+        game.start();
+
+        verify(printStream).println(contains("Game is a draw!"));
+    }
 }

@@ -29,4 +29,9 @@ public class Player {
     public void prompt() {
         printStream.println("Player " + number + ". Choose a cell to mark from 1 - 9:");
     }
+
+    public void winner() {
+        printStream.println("Player " + number + ". Wins!");
+    }
 }
+

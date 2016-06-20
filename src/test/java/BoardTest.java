@@ -78,4 +78,73 @@ public class BoardTest {
         assertThat(board.isNotFull(), is(true));
     }
 
+    @Test
+    public void shouldReturnTrueWhenFirstRowIsFilledWithAllXs() {
+        for(int i = 1; i < 4; i++) {
+            cells.put(i, "X");
+        }
+
+        assertThat(board.isThreeInARow(), is(true));
+    }
+
+    @Test
+    public void shouldReturnTrueWhenSecondRowIsFilledWithAllXs() {
+        for(int i = 4; i < 7; i++) {
+            cells.put(i, "X");
+        }
+
+        assertThat(board.isThreeInARow(), is(true));
+    }
+
+    @Test
+    public void shouldReturnTrueWhenThirdRowIsFilledWithAllXs() {
+        for(int i = 7; i < 10; i++) {
+            cells.put(i, "X");
+        }
+
+        assertThat(board.isThreeInARow(), is(true));
+    }
+
+    @Test
+    public void shouldReturnTrueWhenFirstRowIsFilledWithAllOs() {
+        for(int i = 1; i < 4; i++) {
+            cells.put(i, "O");
+        }
+
+        assertThat(board.isThreeInARow(), is(true));
+    }
+
+    @Test
+    public void shouldReturnTrueWhenSecondRowIsFilledWithAllOs() {
+        for(int i = 4; i < 7; i++) {
+            cells.put(i, "O");
+        }
+
+        assertThat(board.isThreeInARow(), is(true));
+    }
+
+    @Test
+    public void shouldReturnTrueWhenThirdRowIsFilledWithAllOs() {
+        for(int i = 7; i < 10; i++) {
+            cells.put(i, "O");
+        }
+
+        assertThat(board.isThreeInARow(), is(true));
+    }
+
+    @Test
+    public void shouldReturnFalseWhenFirstRowIsNotFilledWithXsAndOs() {
+        assertThat(board.isThreeInARow(), is(false));
+    }
+
+    @Test
+    public void shouldReturnFalseWhenSecondRowIsNotFilledWithXsAndOs() {
+        assertThat(board.isThreeInARow(), is(false));
+    }
+
+    @Test
+    public void shouldReturnFalseWhenThirdRowIsNotFilledWithXsAndOs() {
+        assertThat(board.isThreeInARow(), is(false));
+    }
+
 }
