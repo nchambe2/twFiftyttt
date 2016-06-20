@@ -53,13 +53,29 @@ public class BoardTest {
     @Test
     public void shouldReturnTrueWhenLocationIsFilledWithAnX() {
         cells.put(1, "X");
+
         assertThat(board.isLocationTaken("1"), is(true));
     }
 
     @Test
-    public void shouldReturnFalseWhenLocationIsFilledWithAnO() {
+    public void shouldReturnTrueWhenLocationIsFilledWithAnO() {
         cells.put(1, "O");
+
         assertThat(board.isLocationTaken("1"), is(true));
+    }
+
+    @Test
+    public void shouldReturnFalseWhenBoardIsFull() {
+        for(int i = 1; i < 10; i++) {
+            cells.put(i, "X");
+        }
+
+        assertThat(board.isNotFull(), is(false));
+    }
+
+    @Test
+    public void shouldReturnTrueWhenBoardIsNotFull() {
+        assertThat(board.isNotFull(), is(true));
     }
 
 }

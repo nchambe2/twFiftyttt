@@ -1,5 +1,6 @@
 import java.io.PrintStream;
-import java.util.IntSummaryStatistics;
+import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 
 public class Board {
@@ -32,6 +33,20 @@ public class Board {
         Integer key = Integer.parseInt(cellToMark);
         return cells.get(key).equals("X") || cells.get(key).equals("O");
     }
+
+    public Boolean isNotFull() {
+        Collection<String> cellValues = cells.values();
+
+        for(String value : cellValues) {
+            if(!value.equals("X") && !value.equals("O")) {
+                return true;
+            }
+         }
+
+        return false;
+    }
 }
+
+
 
 
