@@ -19,7 +19,7 @@ public class Game {
         while(board.isNotFull()) {
             playerOne.prompt();
             playerOne.move();
-            if(board.isThreeInARow()) {
+            if(board.isThreeInARow(playerOne.getSymbol())) {
                 playerOne.winner();
                 break;
             }
@@ -27,7 +27,7 @@ public class Game {
             if(board.isNotFull()) {
                 playerTwo.prompt();
                 playerTwo.move();
-                if(board.isThreeInARow()) {
+                if(board.isThreeInARow(playerTwo.getSymbol())) {
                     playerTwo.winner();
                     break;
                 }

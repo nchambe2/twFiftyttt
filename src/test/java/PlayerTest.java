@@ -59,10 +59,15 @@ public class PlayerTest {
 
     @Test
     public void shouldDisplayWinnerMessageWhenTheBoardHasThreeInARowHorizontally() {
-        when(board.isThreeInARow()).thenReturn(true);
+        when(board.isThreeInARow("X")).thenReturn(true);
 
         player.winner();
 
         verify(printStream).println(contains("Wins!"));
+    }
+
+    @Test
+    public void shouldReturnXWhenGettingPlayerSymbol() {
+        assertThat(player.getSymbol(), is("X"));
     }
 }

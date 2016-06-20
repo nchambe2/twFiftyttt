@@ -1,6 +1,5 @@
 import java.io.PrintStream;
 import java.util.Collection;
-import java.util.List;
 import java.util.Map;
 
 public class Board {
@@ -54,23 +53,23 @@ public class Board {
         return !value.equals("X") && !value.equals("O");
     }
 
-    public Boolean isThreeInARow() {
-       if(cells.get(1).equals("X") && cells.get(2).equals("X") && cells.get(3).equals("X")) {
-           return true;
-       } else if(cells.get(1).equals("O") && cells.get(2).equals("O") && cells.get(3).equals("O")) {
-           return true;
-       } else if(cells.get(4).equals("O") && cells.get(5).equals("O") && cells.get(6).equals("O")) {
-           return true;
-       } else if(cells.get(4).equals("X") && cells.get(5).equals("X") && cells.get(6).equals("X")) {
-           return true;
-       } else if(cells.get(7).equals("O") && cells.get(8).equals("O") && cells.get(9).equals("O")) {
-           return true;
-       } else if(cells.get(7).equals("X") && cells.get(8).equals("X") && cells.get(9).equals("X")) {
-           return true;
-       }
-
-        return false;
+    public Boolean isThreeInARow(String playerSymbol) {
+        return isSameSymbol(1,2,3, playerSymbol) ||
+               isSameSymbol(4,5,6, playerSymbol) ||
+               isSameSymbol(7,8,9, playerSymbol) ||
+               isSameSymbol(1,4,7, playerSymbol) ||
+               isSameSymbol(2,5,8, playerSymbol) ||
+               isSameSymbol(3,6,9, playerSymbol) ||
+               isSameSymbol(1,5,9, playerSymbol) ||
+               isSameSymbol(7,5,3, playerSymbol);
     }
+
+    private Boolean isSameSymbol(int cellOne, int cellTwo, int cellThree, String playerSymbol) {
+        return cells.get(cellOne).equals(playerSymbol) &&
+               cells.get(cellTwo).equals(playerSymbol) &&
+               cells.get(cellThree).equals(playerSymbol);
+    }
+
 }
 
 

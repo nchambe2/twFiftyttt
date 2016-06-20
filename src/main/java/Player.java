@@ -33,5 +33,9 @@ public class Player {
     public void winner() {
         printStream.println("Player " + number + ". Wins!");
     }
+
+    public String getSymbol() {
+        return symbol;
+    }
 }
 

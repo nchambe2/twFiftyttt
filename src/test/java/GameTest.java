@@ -61,7 +61,8 @@ public class GameTest {
     @Test
     public void shouldDisplayWinningMessageWhenPlayerOneHasWon() {
         when(board.isNotFull()).thenReturn(true).thenReturn(false);
-        when(board.isThreeInARow()).thenReturn(true);
+        when(board.isThreeInARow("X")).thenReturn(true);
+        when(playerOne.getSymbol()).thenReturn("X");
 
         game.start();
 
@@ -71,7 +72,8 @@ public class GameTest {
     @Test
     public void shouldDisplayWinningMessageWhenPlayerTwoHasWon() {
         when(board.isNotFull()).thenReturn(true).thenReturn(true).thenReturn(false);
-        when(board.isThreeInARow()).thenReturn(false).thenReturn(true);
+        when(board.isThreeInARow("O")).thenReturn(false).thenReturn(true);
+        when(playerTwo.getSymbol()).thenReturn("O");
 
         game.start();
 
@@ -81,7 +83,7 @@ public class GameTest {
     @Test
     public void shouldDisplayThreeByThreeBoardWhenTheBoardIsDrawn() {
         when(board.isNotFull()).thenReturn(true).thenReturn(false);
-        when(board.isThreeInARow()).thenReturn(true);
+        when(board.isThreeInARow("X")).thenReturn(true);
 
         game.start();
 
